@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "./components/header/Navbar"
 import { HashRouter as Router, Route } from "react-router-dom";
 import Projects from "./components/projects/index"
+import Resume from "./components/resume/resume"
 
 function Root() {
   return <h2>Root</h2>;
@@ -12,9 +13,9 @@ function About() {
   return <h2>About</h2>;
 }
 
-function Resume() {
-  return <h2>Resume</h2>;
-}
+// function Resume() {
+//   return <h2>Resume</h2>;
+// }
 
 
 function Certification(){
