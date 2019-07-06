@@ -30,13 +30,33 @@ export default function Navbar() {
        
 
           <Link component={RouterLink} to="/" color="inherit" className={classes.title}>
-            
-            Akash Gandhi</Link>
+          <Typography variant="h6">
+            Akash Gandhi
+            </Typography>
+            </Link>
 
-          <Link component={RouterLink} to="/about" color="inherit" className={classes.menuButton}>About me</Link>
-          <Link component={RouterLink} to="/resume" color="inherit" className={classes.menuButton}>Resume</Link>
-          <Link component={RouterLink} to="/projects" color="inherit" className={classes.menuButton}>Projects</Link>
-          <Link component={RouterLink} to="/others" color="inherit" className={classes.menuButton}>In Progress</Link>
+          <Link component={RouterLink} to="/about" color="inherit" className={classes.menuButton}>
+            <Typography variant="h6">
+            About me
+            </Typography>
+            
+            
+            </Link>
+          <Link component={RouterLink} to="/resume" color="inherit" className={classes.menuButton}>
+          <Typography variant="h6">
+            Resume
+            </Typography>
+            </Link>
+          <Link component={RouterLink} to="/projects" color="inherit" className={classes.menuButton}>
+          <Typography variant="h6">
+            Projects
+            </Typography>
+            </Link>
+          <Link component={RouterLink} to="/others" color="inherit" className={classes.menuButton}>
+          <Typography variant="h6">
+            In Progress
+            </Typography>
+            </Link>
         </Toolbar>
       </AppBar>
     </div>
