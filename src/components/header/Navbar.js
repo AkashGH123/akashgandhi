@@ -4,6 +4,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,23 +27,16 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <Button color="inherit" href="/"  className={classes.menuButton}>
-         
-          <Typography>
-             Akash Gandhi
-          </Typography>
-          </Button>
-          
-          
-          <Typography variant="h6" className={classes.title}>
-            
-          </Typography>
+       
 
-          <Button color="inherit" href="/about"  className={classes.menuButton}>About Me</Button>
-          
-          <Button color="inherit" href="/resume"  className={classes.menuButton}>Resume</Button>
-          <Button color="inherit" href="/projects"  className={classes.menuButton}>Projects</Button>
-          <Button color="inherit" href="others" className={classes.menuButton}>In Progress</Button>
+          <Link component={RouterLink} to="/" color="inherit" className={classes.title}>
+            
+            Akash Gandhi</Link>
+
+          <Link component={RouterLink} to="/about" color="inherit" className={classes.menuButton}>About me</Link>
+          <Link component={RouterLink} to="/resume" color="inherit" className={classes.menuButton}>Resume</Link>
+          <Link component={RouterLink} to="/projects" color="inherit" className={classes.menuButton}>Projects</Link>
+          <Link component={RouterLink} to="/others" color="inherit" className={classes.menuButton}>In Progress</Link>
         </Toolbar>
       </AppBar>
     </div>
