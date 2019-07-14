@@ -4,6 +4,7 @@ import Navbar from "./components/header/Navbar"
 import { HashRouter as Router, Route } from "react-router-dom";
 import Projects from "./components/projects/index"
 import Resume from "./components/resume/resume"
+import googlelogin from "./components/social/index"
 
 function Root() {
   return <h2>Root</h2>;
@@ -31,10 +32,12 @@ function App() {
       <Navbar/>
 
       <Route exact path="/" component={Root} />
+      {/* <Route path="/" component={googlelogin} /> */}
       <Route path="/about" component={About} />
       <Route path="/resume" component={Resume} />
       <Route path="/projects" component={Projects} />
       <Route path="/certification" component={Certification} />
+      {/* <Route path="/others" component={googlelogin} /> */}
       </Router>
       
     </div>
