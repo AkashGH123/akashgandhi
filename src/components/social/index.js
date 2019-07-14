@@ -4,11 +4,14 @@ import React, { Component } from 'react'
 import { Typography } from '@material-ui/core';
 import history from "../../history"
 import { Redirect } from 'react-router'
+import {connect} from "react-redux"
+import {fetchLogin} from "../../actions/actions"
 
 class index extends Component {
 
      responseGoogle = response => {
-         //console.log(response)
+       this.props.fetchLogin("Logged In")
+         console.log(this.props.auth)
         //  return <Redirect to='/app'/>;
         return history.push("/#/app")
       }
@@ -27,14 +30,18 @@ Login
               onFailure={response=>{
                 console.log(response);
               }}
-              cookiePolicy={'single_host_origin'}
+              //cookiePolicy={'single_host_origin'}
             />
             </React.Fragment>
           );
     }
 }
 
-export default index
+const mapStateToProps=state=>({
+  auth:state.auth.signSuccess
+})
+
+export default connect (mapStateToProps,{fetchLogin})(index);
  
 
  

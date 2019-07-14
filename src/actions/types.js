@@ -1,0 +1,1 @@
+export const G_LOGIN="G_LOGIN"

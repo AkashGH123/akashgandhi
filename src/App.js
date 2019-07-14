@@ -5,6 +5,10 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import Projects from "./components/projects/index"
 import Resume from "./components/resume/resume"
 import googlelogin from "./components/social/index"
+
+
+import {connect} from "react-redux"
+import {fetchLogin} from "./actions/actions"
 // import history from "./history"
 
 function Root() {
@@ -48,8 +52,9 @@ function App() {
       </Router>
       
     </div>
+
   
   );
 }
 
-export default App;
+export default connect (null,{fetchLogin})(App);
