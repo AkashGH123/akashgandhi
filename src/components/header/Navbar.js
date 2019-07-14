@@ -54,7 +54,7 @@ export default function Navbar() {
             </Link>
           <Link component={RouterLink} to="/others" color="inherit" className={classes.menuButton}>
           <Typography variant="h6">
-            In Progress
+            Login
             </Typography>
             </Link>
         </Toolbar>
