@@ -12,12 +12,12 @@ import { ThemeProvider } from '@material-ui/styles';
 
 const theme = createMuiTheme({
   palette: {
-    primary:{
-        main:"#424242"
+    primary: {
+      main: '#155fa0',
     },
-    // secondary: {
-    //     //main:""
-    // },
+    secondary: {
+      main: '#a31545',
+    },
   },
   status: {
     danger: 'orange',
