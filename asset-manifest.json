@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/akashgandhi/static/css/main.2cce8147.chunk.css",
-    "main.js": "/akashgandhi/static/js/main.b58e2dde.chunk.js",
-    "main.js.map": "/akashgandhi/static/js/main.b58e2dde.chunk.js.map",
+    "main.js": "/akashgandhi/static/js/main.42d9ae5e.chunk.js",
+    "main.js.map": "/akashgandhi/static/js/main.42d9ae5e.chunk.js.map",
     "runtime~main.js": "/akashgandhi/static/js/runtime~main.1f756fa6.js",
     "runtime~main.js.map": "/akashgandhi/static/js/runtime~main.1f756fa6.js.map",
-    "static/js/2.eb030e90.chunk.js": "/akashgandhi/static/js/2.eb030e90.chunk.js",
-    "static/js/2.eb030e90.chunk.js.map": "/akashgandhi/static/js/2.eb030e90.chunk.js.map",
+    "static/js/2.a1f31e4b.chunk.js": "/akashgandhi/static/js/2.a1f31e4b.chunk.js",
+    "static/js/2.a1f31e4b.chunk.js.map": "/akashgandhi/static/js/2.a1f31e4b.chunk.js.map",
     "index.html": "/akashgandhi/index.html",
-    "precache-manifest.241ce76470878d2bd682e9d15fb97dfc.js": "/akashgandhi/precache-manifest.241ce76470878d2bd682e9d15fb97dfc.js",
+    "precache-manifest.cdb2f7fb4c51ffdeb0d311cccdd943d8.js": "/akashgandhi/precache-manifest.cdb2f7fb4c51ffdeb0d311cccdd943d8.js",
     "service-worker.js": "/akashgandhi/service-worker.js",
     "static/css/main.2cce8147.chunk.css.map": "/akashgandhi/static/css/main.2cce8147.chunk.css.map",
     "static/media/FederalistImage.jpg": "/akashgandhi/static/media/FederalistImage.81b197f6.jpg"
