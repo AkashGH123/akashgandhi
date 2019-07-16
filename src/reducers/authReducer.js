@@ -9,7 +9,6 @@ switch(action.type){
 case G_LOGIN:
     //console.log(action.payload)
     return {...state,signSuccess:action.payload}
-    break;
 default:
     return state
 

@@ -5,7 +5,8 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import Projects from "./components/projects/index"
 import Resume from "./components/resume/resume"
 import googlelogin from "./components/social/index"
-
+import Home from "./components/home/index"
+import About from "./components/about/index"
 
 import {connect} from "react-redux"
 import {fetchLogin} from "./actions/actions"
@@ -29,11 +30,11 @@ this.MyApp=this.MyApp.bind(this)
 
 
    Root() {
-    return <h2>Welcome</h2>;
+    return <Home/>
   }
   
    About() {
-    return <h2>About</h2>;
+    return <About/>
   }
   
   // function Resume() {
@@ -46,7 +47,12 @@ this.MyApp=this.MyApp.bind(this)
   }
   
    MyApp() {
-  return this.props.auth?<h2>DemoApp</h2>:<h2>Login failed</h2>
+  return this.props.auth?
+  <div>
+  <h1>DemoApp - Backend Implementation in progress</h1>
+  <h3>Coming Soon!</h3>
+  </div>
+  :<h2>Login failed</h2>
  
   }
 

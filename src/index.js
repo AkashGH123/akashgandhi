@@ -6,8 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux"
 import store from "./store"
 import { createMuiTheme } from '@material-ui/core/styles';
-import brown from '@material-ui/core/colors/brown';
-import green from '@material-ui/core/colors/green';
 import { ThemeProvider } from '@material-ui/styles';
 
 const theme = createMuiTheme({
