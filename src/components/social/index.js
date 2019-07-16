@@ -13,7 +13,7 @@ class index extends Component {
        this.props.fetchLogin("Logged In")
          console.log(this.props.auth)
         //  return <Redirect to='/app'/>;
-        return history.push("/#/app")
+        history.push("/app")
       }
     render() {
         const client_id=process.env.REACT_APP_CLIENTID

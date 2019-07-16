@@ -1,3 +1,7 @@
-import { createBrowserHistory } from 'history';
+import {
+    //createBrowserHistory,
+    createHashHistory,
+    //createMemoryHistory
+  } from 'history'
 
-export default createBrowserHistory();
+export default createHashHistory();
