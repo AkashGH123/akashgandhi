@@ -3,15 +3,15 @@ import { GoogleLogin } from 'react-google-login';
 import React, { Component } from 'react'
 import { Typography } from '@material-ui/core';
 import history from "../../history"
-import { Redirect } from 'react-router'
 import {connect} from "react-redux"
 import {fetchLogin} from "../../actions/actions"
+
 
 class index extends Component {
 
      responseGoogle = response => {
-       this.props.fetchLogin("Logged In")
-         console.log(this.props.auth)
+       this.props.fetchLogin(true)
+        
         //  return <Redirect to='/app'/>;
         history.push("/app")
       }
