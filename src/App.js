@@ -10,23 +10,22 @@ import About from "./components/about/index"
 
 import {connect} from "react-redux"
 import {fetchLogin} from "./actions/actions"
-// import history from "./history"
-
-
-
-
+import {TextField,Button} from "@material-ui/core"
+import axios from 'axios';
 
 
 class App extends Component {
 
   constructor(props){
 super(props)
-this.state={}
+this.state={output:"not connected to backend"}
 this.Root=this.Root.bind(this)
 this.About=this.About.bind(this)
 this.Certification=this.Certification.bind(this)
 this.MyApp=this.MyApp.bind(this)
+this.handleFormSubmit=this.handleFormSubmit.bind(this)
   }
+  
 
 
    Root() {
@@ -45,12 +44,33 @@ this.MyApp=this.MyApp.bind(this)
    Certification(){
     return <h2>Certification</h2>
   }
+
+  async handleFormSubmit(event){
+    event.preventDefault()
+    const p=await axios.post("http://127.0.0.1:5000","test")
+    if(p.status===200){
+      this.setState({output:"connected"})
+    }
+  }
   
    MyApp() {
   return this.props.auth?
-  <div>
+  <div style={{marginLeft:"10%"}}>
   <h1>DemoApp - Backend Implementation in progress</h1>
   <h3>Coming Soon!</h3>
+  <form name="submission" onSubmit={this.handleFormSubmit}>
+ <TextField
+ name="searchbox"
+ id="1"
+ value={this.state.value}
+ ></TextField>
+ <Button name="submit" type="submit" color="primary" variant="contained" style={{marginLeft:"5%"}}>
+   submit
+ </Button>
+ </form>
+ <pre>
+   {JSON.stringify(this.state.output,2,null)}
+ </pre>
   </div>
   :<h2>Login failed</h2>
  
