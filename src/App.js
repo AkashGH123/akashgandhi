@@ -47,9 +47,17 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
 
   async handleFormSubmit(event){
     event.preventDefault()
-    const p=await axios.post("http://127.0.0.1:5000","test")
+    // const p=await axios.post("http://34.66.170.124:80","test")
+    let formdata=document.getElementById("submission")
+    const form=new FormData(formdata)
+    let json=null
+    form.forEach((value,key)=>{
+      json={data:value}
+    })
+    const p=await axios.post(process.env.REACT_APP_API_URL,json)
     if(p.status===200){
-      this.setState({output:"connected"})
+      
+      this.setState({output:p.data})
     }
   }
   
@@ -58,10 +66,9 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
   <div style={{marginLeft:"10%"}}>
   <h1>DemoApp - Backend Implementation in progress</h1>
   <h3>Coming Soon!</h3>
-  <form name="submission" onSubmit={this.handleFormSubmit}>
+  <form name="submission" id="submission" onSubmit={this.handleFormSubmit}>
  <TextField
  name="searchbox"
- id="1"
  value={this.state.value}
  ></TextField>
  <Button name="submit" type="submit" color="primary" variant="contained" style={{marginLeft:"5%"}}>
@@ -69,7 +76,7 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
  </Button>
  </form>
  <pre>
-   {JSON.stringify(this.state.output,2,null)}
+   {"You submitted : " + JSON.stringify(this.state.output,2,null)}
  </pre>
   </div>
   :<h2>Login failed</h2>
