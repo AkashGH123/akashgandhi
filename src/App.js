@@ -48,7 +48,7 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
 
   async handleFormSubmit(event){
     event.preventDefault()
-    // const p=await axios.post("http://34.66.170.124:80","test")
+    
     let formdata=document.getElementById("submission")
     const form=new FormData(formdata)
     let json=null
