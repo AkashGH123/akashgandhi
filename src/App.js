@@ -62,11 +62,10 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
     // }
 
     const p=await api.post("/send",json)
-    console.log(p)
     
     if(p.status===200){
       
-      this.setState({output:p.data})
+      this.setState({output:p.data.videos})
     }
 
 
@@ -95,7 +94,7 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
  </Button>
  </form>
  <pre>
-   {"You submitted : " + JSON.stringify(this.state.output,2,null)}
+   {"Received : " + JSON.stringify(this.state.output,2,null)}
  </pre>
   </div>
   :<h2>Login failed</h2>
