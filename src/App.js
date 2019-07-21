@@ -65,7 +65,7 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
     
     if(p.status===200){
       
-      this.setState({output:p.data.videos})
+      this.setState({output:p.data})
     }
 
 
@@ -94,7 +94,7 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
  </Button>
  </form>
  <pre>
-   {"Received : " + JSON.stringify(this.state.output,2,null)}
+   {JSON.stringify(this.state.output,2,null)}
  </pre>
   </div>
   :<h2>Login failed</h2>
