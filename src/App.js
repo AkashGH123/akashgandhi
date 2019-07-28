@@ -11,7 +11,6 @@ import About from "./components/about/index"
 import {connect} from "react-redux"
 import {fetchLogin} from "./actions/actions"
 import {TextField,Button} from "@material-ui/core"
-import axios from 'axios';
 import api from "./api/client"
 
 
@@ -55,11 +54,6 @@ this.handleFormSubmit=this.handleFormSubmit.bind(this)
     form.forEach((value,key)=>{
       json={data:value}
     })
-    // const p=await axios.post(process.env.REACT_APP_API_URL+"/send",json)
-    // if(p.status===200){
-      
-    //   this.setState({output:p.data})
-    // }
 
     const p=await api.post("/send",json)
     

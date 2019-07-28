@@ -29,24 +29,25 @@ const useStyles = makeStyles(theme => ({
   }));
   
 
-export default function Federalist() {
+function Federalist(props) {
     const classes = useStyles();
+    const {title,subheader,image,description}=props
 
     return (
         <div>
         <Card className={classes.card}>
       <CardHeader
-        title="The Federalist papers"
-        subheader="Skills : Data Analysis with Python"
+        title={title}
+        subheader={subheader}
       />
       <CardMedia
         className={classes.media}
-        image={FederalistImage}
-        title="Federalist Papers"
+        image={image}
+        title={title}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-       Brief description
+        <Typography variant="body2" color="textSecondary">
+      {description}
         </Typography>
       </CardContent>
            <Button color="primary">
@@ -56,3 +57,5 @@ export default function Federalist() {
     </div>
     )
 }
+
+export default Federalist
