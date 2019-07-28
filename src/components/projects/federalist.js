@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -8,13 +8,16 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import FederalistImage from "../static/images/FederalistImage.jpg";
 
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 345,
-    marginLeft: "5%",
-    marginTop: "2%"
+    width: 400,
+    height: 400,
+    marginLeft: "10%",
+    marginTop: "10%",
+    marginRight: "10%",
+    marginBottom: 10
   },
   media: {
     height: 0,
@@ -33,7 +36,7 @@ function Federalist(props) {
   const { title, subheader, image, description } = props;
 
   return (
-    <div>
+    <Grid key={1} item>
       <Card className={classes.card}>
         <CardHeader title={title} subheader={subheader} />
         <CardMedia className={classes.media} image={image} title={title} />
@@ -44,7 +47,7 @@ function Federalist(props) {
         </CardContent>
         <Button color="primary">Open</Button>
       </Card>
-    </div>
+    </Grid>
   );
 }
 
