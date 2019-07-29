@@ -1,10 +1,7 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-//import Toolbar from '@material-ui/core/Toolbar';
-//import Button from '@material-ui/core/Button';
-//import { mergeClasses } from '@material-ui/styles';
 import Divider from "@material-ui/core/Divider";
+import ResumeElement from "./ResumeElement";
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -15,86 +12,29 @@ const useStyles = makeStyles(theme => ({
   body: {
     marginTop: 8,
     marginLeft: "2%",
-    marginBottom: "1%"
+    marginBottom: "1%",
+    width: "60%"
   }
 }));
 
 function Resume() {
   const classes = useStyles();
-  const objective = (
-    <React.Fragment>
-      <Typography
-        component="h4"
-        variant="h4"
-        className={classes.heading}
-        color="primary"
-      >
-        Objective
-      </Typography>
-      <Typography component="body" variant="body" className={classes.body}>
-        body
-      </Typography>
-    </React.Fragment>
-  );
+  const summary =
+    "Data Analytics enthusiast with 3.5 years of experience in Banking domain with proficiency in SQL/Oracle, Python and Scikit learn*Experienced in working with small/large teams in a fast-paced Agile Environment*Excellent communication skills with proven capability to interact with all levels of organization and clients*Active kaggler who worked on multiple projects such as Microsoft malware prediction, IEEE- CIS Fraud Detection etc.";
+  const skills =
+    "Python(Flask, Pandas, Scikit learn, NumPy etc)* R, SQL, Spark, Apache Calcite, Weka, ReactJS, vanilla JS ,Redux* Jupyter Notebooks, Anaconda";
+  const ml =
+    "Regression,Classification,Clustering*Data Exploration*PCA*RFS/RBE";
 
-  const skills = (
-    <React.Fragment>
-      <Typography
-        component="h4"
-        variant="h4"
-        className={classes.heading}
-        color="primary"
-      >
-        Skills
-      </Typography>
-      <Typography component="body" variant="body" className={classes.body}>
-        body
-      </Typography>
-    </React.Fragment>
-  );
-
-  const experience = (
-    <React.Fragment>
-      <Typography
-        component="h4"
-        variant="h4"
-        className={classes.heading}
-        color="primary"
-      >
-        Work Experience
-      </Typography>
-      <Typography component="body" variant="body" className={classes.body}>
-        body
-      </Typography>
-    </React.Fragment>
-  );
-
-  const education = (
-    <React.Fragment>
-      <Typography
-        component="h4"
-        variant="h4"
-        className={classes.heading}
-        color="primary"
-      >
-        Education
-      </Typography>
-      <Typography component="body" variant="body" className={classes.body}>
-        body
-      </Typography>
-    </React.Fragment>
-  );
   return (
     <div>
-      {objective}
+      <ResumeElement classes={classes} heading="Summary" body={summary} />
       <Divider />
-      {skills}
+      <ResumeElement classes={classes} heading="Skills" body={skills} />
 
       <Divider />
-      {experience}
-      <Divider />
-      {education}
-      <Divider />
+      <ResumeElement classes={classes} heading="ML Skills" body={ml} />
+
       <Divider />
     </div>
   );
