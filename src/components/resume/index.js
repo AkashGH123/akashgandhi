@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import ResumeElement from "./ResumeElement";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -14,6 +15,11 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "2%",
     marginBottom: "1%",
     width: "60%"
+  },
+  link: {
+    marginTop: "2%",
+    marginLeft: "2%",
+    marginBottom: "2%"
   }
 }));
 
@@ -24,10 +30,21 @@ function Resume() {
   const skills =
     "Python(Flask, Pandas, Scikit learn, NumPy etc)* R, SQL, Spark, Apache Calcite, Weka, ReactJS, vanilla JS ,Redux* Jupyter Notebooks, Anaconda";
   const ml =
-    "Regression,Classification,Clustering*Data Exploration*PCA*RFS/RBE";
+    "Regression,Classification,Clustering*Data Exploration, Hyperparameter tuning*Feature Engineering and Feature Selection using PCA,RFS/RBE etc.";
 
   return (
-    <div>
+    <div className={classes}>
+      <a href={process.env.PUBLIC_URL + "Resume.pdf"} download>
+        <Typography
+          component="h4"
+          variant="h6"
+          className={classes.link}
+          color="primary"
+        >
+          Download Resume
+        </Typography>
+      </a>
+
       <ResumeElement classes={classes} heading="Summary" body={summary} />
       <Divider />
       <ResumeElement classes={classes} heading="Skills" body={skills} />
