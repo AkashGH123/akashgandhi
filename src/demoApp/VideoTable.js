@@ -10,8 +10,8 @@ import Paper from "@material-ui/core/Paper";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    marginTop: theme.spacing(3),
-    overflowX: "auto"
+    marginTop: theme.spacing(3)
+    //overflowX: "auto"
   },
   table: {
     minWidth: 650
@@ -34,10 +34,18 @@ function VideoTable(props) {
         </TableHead>
         <TableBody>
           {rows.map(row => (
-            <TableRow key={Math.random()}>
-              <TableCell scope="row">
-                {"https://www.youtube.com/watch?v=" + row}
-              </TableCell>
+            <TableRow
+              key={row}
+              id={row}
+              onClick={row => {
+                console.log(row);
+              }}
+            >
+              <TableCell>{"https://www.youtube.com/watch?v=" + row}</TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
             </TableRow>
           ))}
         </TableBody>
