@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import api from "../api/client";
 import { connect } from "react-redux";
 import AppLogin from "./AppLogin";
+import VideoList from "./VideoList";
 
 function MyApp(props) {
-  const [output, setOutput] = useState([]);
+  const [output, setOutput] = useState(null);
   const [value, setValue] = useState();
 
   async function handleFormSubmit(event) {
@@ -27,8 +28,12 @@ function MyApp(props) {
 
   return props.auth ? (
     <div style={{ marginLeft: "10%" }}>
-      <AppLogin value={value} handleFormSubmit={handleFormSubmit} />
-      <pre>{JSON.stringify(output, 2, null)}</pre>
+      <AppLogin
+        value={value}
+        handleFormSubmit={handleFormSubmit}
+        output={output}
+      />
+      <VideoList output={output} />
     </div>
   ) : (
     <h2>Login failed</h2>
