@@ -1,0 +1,49 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 650
+  }
+}));
+
+function VideoTable(props) {
+  const classes = useStyles();
+  const { column, rows } = props;
+
+  return (
+    <Paper className={classes.root}>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            {column.map(item => {
+              return <TableCell>{item}</TableCell>;
+            })}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={Math.random()}>
+              <TableCell scope="row">
+                {"https://www.youtube.com/watch?v=" + row}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+}
+
+export default VideoTable;
