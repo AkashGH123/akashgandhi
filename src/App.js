@@ -7,11 +7,9 @@ import Resume from "./components/resume/";
 import googlelogin from "./components/social/index";
 import Home from "./components/home/index";
 import About from "./components/about/index";
-
 import { connect } from "react-redux";
 import { fetchLogin } from "./actions/actions";
-import { TextField, Button } from "@material-ui/core";
-import api from "./api/client";
+import MyApp from "./demoApp/index";
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +18,6 @@ class App extends Component {
     this.Root = this.Root.bind(this);
     this.About = this.About.bind(this);
     this.Certification = this.Certification.bind(this);
-    this.MyApp = this.MyApp.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   Root() {
@@ -40,59 +36,6 @@ class App extends Component {
     return <h2>Certification</h2>;
   }
 
-  async handleFormSubmit(event) {
-    event.preventDefault();
-
-    let formdata = document.getElementById("submission");
-    const form = new FormData(formdata);
-    let json = null;
-    form.forEach((value, key) => {
-      json = { data: value };
-    });
-
-    const p = await api.post("/send", json);
-
-    if (p.status === 200) {
-      this.setState({ output: p.data });
-    }
-
-    // //GET request
-    // const p=await api.get()
-    // console.log(p.data)
-    // if(p.status===200){
-
-    //   this.setState({output:p.data})
-    // }
-  }
-
-  MyApp() {
-    return this.props.auth ? (
-      <div style={{ marginLeft: "10%" }}>
-        <h1>DemoApp - Backend Implementation in progress</h1>
-        <h3>Coming Soon!</h3>
-        <form
-          name="submission"
-          id="submission"
-          onSubmit={this.handleFormSubmit}
-        >
-          <TextField name="searchbox" value={this.state.value}></TextField>
-          <Button
-            name="submit"
-            type="submit"
-            color="primary"
-            variant="contained"
-            style={{ marginLeft: "5%" }}
-          >
-            submit
-          </Button>
-        </form>
-        <pre>{JSON.stringify(this.state.output, 2, null)}</pre>
-      </div>
-    ) : (
-      <h2>Login failed</h2>
-    );
-  }
-
   render() {
     return (
       <div>
@@ -107,7 +50,7 @@ class App extends Component {
           <Route path="/projects" component={Projects} />
           <Route path="/certification" component={this.Certification} />
           <Route path="/others" component={googlelogin} />
-          <Route path="/app" component={this.MyApp} />
+          <Route path="/app" component={MyApp} />
         </Router>
       </div>
     );
