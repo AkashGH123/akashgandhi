@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 function VideoTable(props) {
   const classes = useStyles();
+  const [selected, setSelected] = useState();
   const { column, rows } = props;
 
   return (
@@ -34,15 +36,19 @@ function VideoTable(props) {
         </TableHead>
         <TableBody>
           {rows.map(row => (
-            <TableRow
-              key={row}
-              id={row}
-              onClick={key => {
-                console.log(key.currentTarget.id);
-              }}
-            >
+            <TableRow key={row} id={row}>
               <TableCell>{"https://www.youtube.com/watch?v=" + row}</TableCell>
-              <TableCell></TableCell>
+              <TableCell>
+                <Button
+                  id={row}
+                  onClick={event => {
+                    event.preventDefault();
+                    console.log(event.currentTarget.id);
+                  }}
+                >
+                  Download
+                </Button>
+              </TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
