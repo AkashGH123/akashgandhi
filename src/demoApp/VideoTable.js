@@ -37,8 +37,8 @@ function VideoTable(props) {
             <TableRow
               key={row}
               id={row}
-              onClick={row => {
-                console.log(row);
+              onClick={key => {
+                console.log(key.currentTarget.id);
               }}
             >
               <TableCell>{"https://www.youtube.com/watch?v=" + row}</TableCell>
