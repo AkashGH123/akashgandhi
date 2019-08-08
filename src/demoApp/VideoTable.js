@@ -44,6 +44,15 @@ function VideoTable(props) {
     downloadObjectAsJson(p.data, "captions");
   }
 
+  async function getComments(event) {
+    event.preventDefault();
+    const id = event.currentTarget.id;
+    const data = { data: id };
+    const p = await api.post("/comments", data);
+    console.log(p.data);
+    //downloadObjectAsJson(p.data, "comments");
+  }
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -59,12 +68,28 @@ function VideoTable(props) {
             <TableRow key={row} id={row}>
               <TableCell>{"https://www.youtube.com/watch?v=" + row}</TableCell>
               <TableCell>
-                <Button id={row} onClick={getCaptions}>
+                <Button
+                  id={row}
+                  onClick={getCaptions}
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                >
                   Download
                 </Button>
               </TableCell>
               <TableCell></TableCell>
-              <TableCell></TableCell>
+              <TableCell>
+                <Button
+                  id={row}
+                  onClick={getComments}
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                >
+                  Comments
+                </Button>
+              </TableCell>
               <TableCell></TableCell>
             </TableRow>
           ))}
