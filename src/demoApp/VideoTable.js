@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import api from "../api/client";
+import BarGraph from "./BarGraph";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,6 +24,18 @@ const useStyles = makeStyles(theme => ({
 function VideoTable(props) {
   const classes = useStyles();
   const { column, rows } = props;
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
+  const [content, setContent] = useState();
+
+  const handleClickOpen = scrollType => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+
+  function handleClose() {
+    setOpen(false);
+  }
 
   function downloadObjectAsJson(exportObj, exportName) {
     const dataStr =
@@ -48,8 +61,15 @@ function VideoTable(props) {
     event.preventDefault();
     const id = event.currentTarget.id;
     const data = { data: id };
+    const comments_dict = {};
     const p = await api.post("/comments", data);
-    downloadObjectAsJson(p.data, "comments");
+    p.data.items.map((item, index) => {
+      let name = item.snippet.topLevelComment.snippet.authorDisplayname;
+      comments_dict[index] = item.snippet.topLevelComment.snippet.textOriginal;
+    });
+    setContent(comments_dict);
+    setOpen(true);
+    //downloadObjectAsJson(p.data, "comments");
   }
 
   return (
@@ -94,6 +114,13 @@ function VideoTable(props) {
           ))}
         </TableBody>
       </Table>
+      <BarGraph
+        handleClickOpen={handleClickOpen}
+        handleClose={handleClose}
+        open={open}
+        scroll={scroll}
+        content={content}
+      />
     </Paper>
   );
 }
