@@ -5,22 +5,31 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import CommentsChart from "./CommentsChart";
+import { string } from "prop-types";
 
 export default function ScrollDialog(props) {
   const { open, scroll, handleClickOpen, handleClose, content } = props;
-  console.log(content);
+  let data = [];
+  if (content) {
+    Object.keys(content).map((key, index) => {
+      data.push({ name: index, comment_length: content[key].length });
+    });
+  }
+
   return (
     <div>
-      <Button onClick={handleClickOpen("paper")}>scroll=paper</Button>
       <Dialog
         open={open}
         onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
       >
-        <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="scroll-dialog-title">
+          Bar graph for Comments
+        </DialogTitle>
         <DialogContent dividers={scroll === "paper"}>
-          <DialogContentText>Some Content</DialogContentText>
+          {<CommentsChart data={data} />}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
