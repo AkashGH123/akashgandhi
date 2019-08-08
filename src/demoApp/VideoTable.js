@@ -49,8 +49,7 @@ function VideoTable(props) {
     const id = event.currentTarget.id;
     const data = { data: id };
     const p = await api.post("/comments", data);
-    console.log(p.data);
-    //downloadObjectAsJson(p.data, "comments");
+    downloadObjectAsJson(p.data, "comments");
   }
 
   return (
