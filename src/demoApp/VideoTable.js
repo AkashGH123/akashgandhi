@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
     overflowX: "auto"
   },
   table: {
@@ -27,6 +28,7 @@ function VideoTable(props) {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
   const [content, setContent] = useState();
+  const [metadata, setMetadata] = useState();
 
   const handleClickOpen = scrollType => () => {
     setOpen(true);
@@ -72,6 +74,21 @@ function VideoTable(props) {
     //downloadObjectAsJson(p.data, "comments");
   }
 
+  async function getMetadata(event) {
+    event.preventDefault();
+    const id = event.currentTarget.id;
+    const data = { data: id };
+    const comments_dict = {};
+    const p = await api.post("/metadata", data);
+    const duration = p.data.items[0].contentDetails.duration;
+    const title = p.data.items[0].snippet.title;
+    const stats = p.data.items[0].statistics;
+    console.log(stats);
+    // setContent(comments_dict);
+    // setOpen(true);
+    //downloadObjectAsJson(p.data, "comments");
+  }
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -85,8 +102,21 @@ function VideoTable(props) {
         <TableBody>
           {rows.map(row => (
             <TableRow key={row} id={row}>
-              <TableCell>{"https://www.youtube.com/watch?v=" + row}</TableCell>
-              <TableCell>
+              <TableCell size="small">
+                {"https://www.youtube.com/watch?v=" + row}
+              </TableCell>
+              <TableCell size="small">
+                <Button
+                  id={row}
+                  onClick={getMetadata}
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                >
+                  Video Metadata
+                </Button>
+              </TableCell>
+              <TableCell size="small">
                 <Button
                   id={row}
                   onClick={getCaptions}
@@ -97,8 +127,7 @@ function VideoTable(props) {
                   Download
                 </Button>
               </TableCell>
-              <TableCell></TableCell>
-              <TableCell>
+              <TableCell size="small">
                 <Button
                   id={row}
                   onClick={getComments}
@@ -109,7 +138,6 @@ function VideoTable(props) {
                   Comments
                 </Button>
               </TableCell>
-              <TableCell></TableCell>
             </TableRow>
           ))}
         </TableBody>
