@@ -18,16 +18,15 @@ export default function ScrollDialog(props) {
   }
 
   return (
-    <div>
+    <div style={{ width: 700 }}>
       <Dialog
         open={open}
         onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
+        fullWidth
       >
-        <DialogTitle id="scroll-dialog-title">
-          Bar graph for Comments
-        </DialogTitle>
+        <DialogTitle id="scroll-dialog-title">Graph</DialogTitle>
         <DialogContent dividers={scroll === "paper"}>
           {<CommentsChart data={data} />}
         </DialogContent>

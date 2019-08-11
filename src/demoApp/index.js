@@ -27,7 +27,7 @@ function MyApp(props) {
   }
 
   return props.auth ? (
-    <div style={{ marginLeft: "10%" }}>
+    <div style={{ marginLeft: "10%", marginRight: "10%" }}>
       <AppLogin
         value={value}
         handleFormSubmit={handleFormSubmit}

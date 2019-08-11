@@ -17,7 +17,7 @@ export default class CommentsChart extends PureComponent {
     const { data } = this.props;
     return (
       <BarChart
-        width={700}
+        width={900}
         height={300}
         data={data}
         margin={{
