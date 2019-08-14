@@ -89,6 +89,20 @@ function VideoTable(props) {
     //downloadObjectAsJson(p.data, "comments");
   }
 
+  async function getSentiments(event) {
+    event.preventDefault();
+    const id = event.currentTarget.id;
+    const data = { data: id };
+    const comments_dict = {};
+    const p = await api.post("/analyseSentiments", data);
+    p.data.items.map((item, index) => {
+      let name = item.snippet.topLevelComment.snippet.authorDisplayname;
+      comments_dict[index] = item.snippet.topLevelComment.snippet.textOriginal;
+    });
+    console.log(comments_dict);
+    //downloadObjectAsJson(p.data, "comments");
+  }
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -136,6 +150,17 @@ function VideoTable(props) {
                   variant="contained"
                 >
                   Comments
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  id={row}
+                  onClick={getSentiments}
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                >
+                  Analyse
                 </Button>
               </TableCell>
             </TableRow>

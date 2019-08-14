@@ -10,8 +10,8 @@ function VideoList(props) {
         "Video Metadata",
         "Download Captions",
         //"Analyse Captions",
-        "Comments"
-        //"Analyse Comments"
+        "Comments",
+        "Analyse Comments"
       ]}
       rows={output.videos}
     />
