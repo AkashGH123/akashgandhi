@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import api from "../api/client";
 import BarGraph from "./BarGraph";
+import DataFrame, { Row } from "dataframe-js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -101,6 +102,7 @@ function VideoTable(props) {
     const id = event.currentTarget.id;
     const data = { data: id };
     const comments_dict = {};
+    let content = [];
     const p = await api.post("/analyseSentiments", data);
     Object.keys(p.data).map(key => {
       if (p.data[key].length > 1) {
@@ -128,6 +130,28 @@ function VideoTable(props) {
     });
 
     //Write logic to display sentiments
+
+    const df = new DataFrame(
+      {
+        key: Object.keys(comments_dict), // <------ A column
+        sentiments: Object.values(comments_dict)
+      },
+      ["key", "sentiments"]
+    );
+
+    const results = df
+      .groupBy("sentiments")
+      .aggregate(group => group.count())
+      .rename("aggregation", "groupCount")
+      .toDict();
+    for (let i = 0; i < results.sentiments.length; i++) {
+      content.push({
+        sentiment: results.sentiments[i],
+        count: results.groupCount[i]
+      });
+    }
+    setContent(content);
+    setOpen(true);
     //downloadObjectAsJson(p.data, "comments");
   }
 

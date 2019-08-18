@@ -15,6 +15,7 @@ export default class CommentsChart extends PureComponent {
 
   render() {
     const { data } = this.props;
+    const datakey = data ? Object.keys(data[0]) : "comment_length";
     return (
       <BarChart
         width={900}
@@ -28,11 +29,11 @@ export default class CommentsChart extends PureComponent {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey={datakey[0]} />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="comment_length" fill="#2874A6" />
+        <Bar dataKey={datakey[1]} fill="#2874A6" />
         {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
       </BarChart>
     );
