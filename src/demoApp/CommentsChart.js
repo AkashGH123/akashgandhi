@@ -32,7 +32,7 @@ export default class CommentsChart extends PureComponent {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="comment_length" fill="#8884d8" />
+        <Bar dataKey="comment_length" fill="#2874A6" />
         {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
       </BarChart>
     );

@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 function VideoTable(props) {
   const classes = useStyles();
   const { column, rows } = props;
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(null);
   const [scroll, setScroll] = useState("paper");
   const [content, setContent] = useState();
   const [metadata, setMetadata] = useState();
@@ -64,12 +64,18 @@ function VideoTable(props) {
     const id = event.currentTarget.id;
     const data = { data: id };
     const comments_dict = {};
+    let content = [];
     const p = await api.post("/comments", data);
     p.data.items.map((item, index) => {
       let name = item.snippet.topLevelComment.snippet.authorDisplayname;
       comments_dict[index] = item.snippet.topLevelComment.snippet.textOriginal;
     });
-    setContent(comments_dict);
+
+    Object.keys(comments_dict).map((key, index) => {
+      content.push({ name: index, comment_length: comments_dict[key].length });
+    });
+
+    setContent(content);
     setOpen(true);
     //downloadObjectAsJson(p.data, "comments");
   }
@@ -91,15 +97,37 @@ function VideoTable(props) {
 
   async function getSentiments(event) {
     event.preventDefault();
+    const sentiments_map = { Neutral: 0, Positive: 1, Negative: -1 };
     const id = event.currentTarget.id;
     const data = { data: id };
     const comments_dict = {};
     const p = await api.post("/analyseSentiments", data);
-    p.data.items.map((item, index) => {
-      let name = item.snippet.topLevelComment.snippet.authorDisplayname;
-      comments_dict[index] = item.snippet.topLevelComment.snippet.textOriginal;
+    Object.keys(p.data).map(key => {
+      if (p.data[key].length > 1) {
+        let sum = 0;
+        p.data[key].map(item => {
+          sum = sum + sentiments_map[item];
+        });
+        switch (true) {
+          case sum === 0:
+            comments_dict[key] = "Neutral";
+            break;
+          case sum > 0:
+            comments_dict[key] = "Positive";
+            break;
+          case sum < 0:
+            comments_dict[key] = "Negative";
+            break;
+          default:
+            comments_dict[key] = "Neutral";
+            break;
+        }
+      } else {
+        comments_dict[key] = p.data[key][0];
+      }
     });
-    console.log(comments_dict);
+
+    //Write logic to display sentiments
     //downloadObjectAsJson(p.data, "comments");
   }
 

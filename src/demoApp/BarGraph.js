@@ -10,12 +10,12 @@ import { string } from "prop-types";
 
 export default function ScrollDialog(props) {
   const { open, scroll, handleClickOpen, handleClose, content } = props;
-  let data = [];
-  if (content) {
-    Object.keys(content).map((key, index) => {
-      data.push({ name: index, comment_length: content[key].length });
-    });
-  }
+  // let data = [];
+  // if (content) {
+  //   Object.keys(content).map((key, index) => {
+  //     data.push({ name: index, comment_length: content[key].length });
+  //   });
+  // }
 
   return (
     <div style={{ width: 700 }}>
@@ -28,7 +28,7 @@ export default function ScrollDialog(props) {
       >
         <DialogTitle id="scroll-dialog-title">Graph</DialogTitle>
         <DialogContent dividers={scroll === "paper"}>
-          {<CommentsChart data={data} />}
+          {<CommentsChart data={content} />}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
