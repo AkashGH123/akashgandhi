@@ -7,7 +7,7 @@ function VideoList(props) {
     <VideoTable
       column={[
         "Videos",
-        "Video Metadata",
+        "Dashboard",
         "Download Captions",
         //"Analyse Captions",
         "Comments",

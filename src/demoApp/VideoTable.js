@@ -10,6 +10,9 @@ import Button from "@material-ui/core/Button";
 import api from "../api/client";
 import BarGraph from "./BarGraph";
 import DataFrame, { Row } from "dataframe-js";
+import history from "../history";
+import Link from "@material-ui/core/Link";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -91,6 +94,7 @@ function VideoTable(props) {
     const title = p.data.items[0].snippet.title;
     const stats = p.data.items[0].statistics;
     console.log(stats);
+    history.push("/dashboard");
     // setContent(comments_dict);
     // setOpen(true);
     //downloadObjectAsJson(p.data, "comments");
@@ -172,15 +176,22 @@ function VideoTable(props) {
                 {"https://www.youtube.com/watch?v=" + row}
               </TableCell>
               <TableCell size="small">
-                <Button
+                {/* <Button
                   id={row}
                   onClick={getMetadata}
                   size="small"
                   color="primary"
                   variant="contained"
+                > */}
+                <Link
+                  to={"/dashboard/" + row}
+                  component={RouterLink}
+                  target="_blank"
+                  id={row}
                 >
-                  Video Metadata
-                </Button>
+                  Video Dashboard
+                </Link>
+                {/* </Button> */}
               </TableCell>
               <TableCell size="small">
                 <Button

@@ -36,6 +36,10 @@ class App extends Component {
     return <h2>Certification</h2>;
   }
 
+  Dashboard(props) {
+    return <h2>{props.match.params.id}</h2>;
+  }
+
   render() {
     return (
       <div>
@@ -51,6 +55,7 @@ class App extends Component {
           <Route path="/certification" component={this.Certification} />
           <Route path="/others" component={googlelogin} />
           <Route path="/app" component={MyApp} />
+          <Route path="/dashboard/:id" component={this.Dashboard} />
         </Router>
       </div>
     );
