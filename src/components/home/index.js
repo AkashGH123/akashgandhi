@@ -60,7 +60,9 @@ export default function Home() {
         <Typography variant="body1" color="secondary" gutterBottom>
           In my spare time I enjoy learning new technologies or solve new
           problems on kaggle competitions . I am a voracious reader (mostly
-          technical) and I intend to start reading even more
+          technical) and I intend to start reading even more . On weekends I
+          enjoy playing Table tennis , badminton or any new activities and
+          sometimes I binge watch shows netflix
           <FontAwesomeIcon icon={faSmile} />
         </Typography>
         <Typography variant="body1" color="secondary" gutterBottom>
