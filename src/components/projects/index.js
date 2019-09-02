@@ -27,22 +27,25 @@ class Projects extends Component {
         <Grid item xs={24}>
           <Grid container justify="left" spacing={spacing}>
             <Federalist
-              title="The Federalist papers"
-              subheader="Skills : Data Analysis with Python"
-              description="Brief description"
-              image={process.env.PUBLIC_URL + "/images/FederalistImage.jpg"}
-            />
-            <Federalist
               title="Malware prediction"
               subheader="Skills : Data Analysis with Python"
               description="Brief description"
               image={process.env.PUBLIC_URL + "/images/kaggle_40.png"}
+              filename="MicrosoftMalwarePrediction"
             />
             <Federalist
               title="IEEE-Fraud Detection"
               subheader="Skills : Data Analysis with Python"
               description="Brief description"
               image={process.env.PUBLIC_URL + "/images/kaggle_40.png"}
+              filename="FraudDetection"
+            />
+            <Federalist
+              title="The Federalist papers"
+              subheader="Skills : Data Analysis with Python"
+              description="Brief description"
+              image={process.env.PUBLIC_URL + "/images/FederalistImage.jpg"}
+              filename="federalist"
             />
           </Grid>
         </Grid>

@@ -11,6 +11,7 @@ function ElementBody(props) {
         variant="body"
         className={classes.body}
         color="primary"
+        gutterBottom
       >
         {item}
       </Typography>

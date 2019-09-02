@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 
 function Federalist(props) {
   const classes = useStyles();
-  const { title, subheader, image, description } = props;
+  const { title, subheader, image, description, filename } = props;
 
   return (
     <Grid key={1} item>
@@ -45,7 +45,13 @@ function Federalist(props) {
             {description}
           </Typography>
         </CardContent>
-        <Button color="primary">Open</Button>
+        <Button
+          color="primary"
+          href={process.env.PUBLIC_URL + "/projectcode/" + filename + ".html"}
+          target="_blank"
+        >
+          Open
+        </Button>
       </Card>
     </Grid>
   );

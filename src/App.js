@@ -3,13 +3,14 @@ import "./App.css";
 import Navbar from "./components/header/Navbar";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Projects from "./components/projects/index";
-import Resume from "./components/resume/";
+import Resume from "./components/resume";
 import googlelogin from "./components/social/index";
 import Home from "./components/home/index";
 import About from "./components/about/index";
 import { connect } from "react-redux";
 import { fetchLogin } from "./actions/actions";
 import MyApp from "./demoApp/index";
+import Dashboard from "./components/dashboard";
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +56,10 @@ class App extends Component {
           <Route path="/certification" component={this.Certification} />
           <Route path="/others" component={googlelogin} />
           <Route path="/app" component={MyApp} />
-          <Route path="/dashboard/:id" component={this.Dashboard} />
+          <Route
+            path="/dashboard/:id"
+            render={props => <Dashboard videoid={props.match.params.id} />}
+          />
         </Router>
       </div>
     );

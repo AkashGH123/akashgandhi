@@ -9,7 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import api from "../api/client";
 import BarGraph from "./BarGraph";
-import DataFrame, { Row } from "dataframe-js";
+import DataFrame from "dataframe-js";
 import history from "../history";
 import Link from "@material-ui/core/Link";
 import { Link as RouterLink } from "react-router-dom";
@@ -32,7 +32,7 @@ function VideoTable(props) {
   const [open, setOpen] = useState(null);
   const [scroll, setScroll] = useState("paper");
   const [content, setContent] = useState();
-  const [metadata, setMetadata] = useState();
+  //const [metadata, setMetadata] = useState();
 
   const handleClickOpen = scrollType => () => {
     setOpen(true);
@@ -70,11 +70,12 @@ function VideoTable(props) {
     const comments_dict = {};
     let content = [];
     const p = await api.post("/comments", data);
+    // eslint-disable-next-line
     p.data.items.map((item, index) => {
-      let name = item.snippet.topLevelComment.snippet.authorDisplayname;
+      //let name = item.snippet.topLevelComment.snippet.authorDisplayname;
       comments_dict[index] = item.snippet.topLevelComment.snippet.textOriginal;
     });
-
+    // eslint-disable-next-line
     Object.keys(comments_dict).map((key, index) => {
       content.push({ name: index, comment_length: comments_dict[key].length });
     });
@@ -88,10 +89,10 @@ function VideoTable(props) {
     event.preventDefault();
     const id = event.currentTarget.id;
     const data = { data: id };
-    const comments_dict = {};
+    //const comments_dict = {};
     const p = await api.post("/metadata", data);
-    const duration = p.data.items[0].contentDetails.duration;
-    const title = p.data.items[0].snippet.title;
+    //const duration = p.data.items[0].contentDetails.duration;
+    //const title = p.data.items[0].snippet.title;
     const stats = p.data.items[0].statistics;
     console.log(stats);
     history.push("/dashboard");
@@ -108,9 +109,11 @@ function VideoTable(props) {
     const comments_dict = {};
     let content = [];
     const p = await api.post("/analyseSentiments", data);
+    // eslint-disable-next-line
     Object.keys(p.data).map(key => {
       if (p.data[key].length > 1) {
         let sum = 0;
+        // eslint-disable-next-line
         p.data[key].map(item => {
           sum = sum + sentiments_map[item];
         });

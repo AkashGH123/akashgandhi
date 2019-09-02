@@ -5,8 +5,8 @@ function AppLogin(props) {
   const { handleFormSubmit, value } = props;
   return (
     <div>
-      <h1>DemoApp - Backend Implementation in progress</h1>
-      <h3>Coming Soon!</h3>
+      <h1>DemoApp- Search English Videos on Youtube</h1>
+      {/* <h3>Coming Soon!</h3> */}
       <form name="submission" id="submission" onSubmit={handleFormSubmit}>
         <TextField
           name="searchbox"
@@ -20,7 +20,7 @@ function AppLogin(props) {
           variant="contained"
           style={{ marginLeft: "5%" }}
         >
-          submit
+          Search
         </Button>
       </form>
     </div>

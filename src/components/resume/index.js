@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "2%",
     marginBottom: "2%"
   },
+  paper: {
+    marginBottom: "5%"
+  },
   body: {
     marginTop: 8,
     marginLeft: "2%",
@@ -28,7 +31,7 @@ function Resume() {
   const summary =
     "Data Analytics enthusiast with 3.5 years of experience in Banking domain with proficiency in SQL/Oracle, Python and Scikit learn*Experienced in working with small/large teams in a fast-paced Agile Environment*Excellent communication skills with proven capability to interact with all levels of organization and clients*Active kaggler who worked on multiple projects such as Microsoft malware prediction, IEEE- CIS Fraud Detection etc.";
   const skills =
-    "Python(Flask, Pandas, Scikit learn, NumPy etc)* R, SQL, Spark, Apache Calcite, Weka, ReactJS, vanilla JS ,Redux* Jupyter Notebooks, Anaconda";
+    "Python(Flask, Pandas, Scikit learn, NumPy, PySpark etc)* R, SQL, Spark,  Weka, ReactJS, vanilla JS ,Redux* Jupyter Notebooks, Anaconda, cloud computing on AWS and GCP";
   const ml =
     "Regression,Classification,Clustering*Data Exploration, Hyperparameter tuning*Feature Engineering and Feature Selection using PCA,RFS/RBE etc.";
 
