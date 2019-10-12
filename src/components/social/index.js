@@ -10,6 +10,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
+import api from "../../api/client";
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -42,8 +43,18 @@ function Index(props) {
   const classes = useStyles();
   const client_id = process.env.REACT_APP_CLIENTID;
 
+  async function visitor(email) {
+    let json = null;
+    json = { data: email };
+    const p = await api.post("/visitor", json);
+    console.log(p);
+  }
+
   const responseGoogle = response => {
     props.fetchLogin(true);
+    //console.log(response.profileObj.email);
+    visitor(response.profileObj.email);
+
     history.push("/app");
   };
 
