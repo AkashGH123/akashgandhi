@@ -47,7 +47,6 @@ function Index(props) {
     let json = null;
     json = { data: email };
     const p = await api.post("/visitor", json);
-    console.log(p);
   }
 
   const responseGoogle = response => {
