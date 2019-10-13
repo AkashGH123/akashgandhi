@@ -37,7 +37,7 @@ function Resume() {
 
   return (
     <div className={classes}>
-      <a href={process.env.PUBLIC_URL + "Resume.pdf"} download>
+      <a href={process.env.PUBLIC_URL + "/Resume.pdf"} download>
         <Typography
           component="h4"
           variant="h6"
