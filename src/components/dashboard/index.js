@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import api from "../../api/client";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -42,6 +43,17 @@ const useStyles = makeStyles(theme => ({
 function Dashboard(props) {
   const { videoid } = props;
   const classes = useStyles();
+  const [metadata, setMetadata] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = { data: videoid };
+      const p = await api.post("/metadata", data);
+      let mystr = p.data.toString();
+      console.log(JSON.stringify(mystr.replace("\n", "")));
+    }
+    fetchData();
+  }, [videoid]);
 
   const page = (
     <main className={classes.content}>
@@ -69,6 +81,9 @@ function Dashboard(props) {
           >
             <Paper className={classes.fixedHeightPaper}>
               <Typography color="primary" variant="subtitle1">
+                {"Video Statistics for " + videoid}
+              </Typography>
+              <Typography color="primary" variant="body">
                 {"Video Statistics for " + videoid}
               </Typography>
             </Paper>

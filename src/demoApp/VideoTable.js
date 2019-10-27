@@ -85,17 +85,18 @@ function VideoTable(props) {
     //downloadObjectAsJson(p.data, "comments");
   }
 
-  async function getMetadata(event) {
-    event.preventDefault();
-    const id = event.currentTarget.id;
-    const data = { data: id };
+  async function getMetadata(id) {
+    // event.preventDefault();
+    // const id = event.currentTarget.id;
+    // const data = { data: id };
     //const comments_dict = {};
-    const p = await api.post("/metadata", data);
+    const p = await api.post("/metadata", id);
     //const duration = p.data.items[0].contentDetails.duration;
     //const title = p.data.items[0].snippet.title;
-    const stats = p.data.items[0].statistics;
-    console.log(stats);
-    history.push("/dashboard");
+    //const stats = p.data.items[0].statistics;
+    //console.log(stats);
+    //history.push("/dashboard");
+    return p;
     // setContent(comments_dict);
     // setOpen(true);
     //downloadObjectAsJson(p.data, "comments");
@@ -154,7 +155,7 @@ function VideoTable(props) {
     for (let i = 0; i < results.sentiments.length; i++) {
       content.push({
         sentiment: results.sentiments[i],
-        count: results.groupCount[i]
+        sentiments: results.groupCount[i]
       });
     }
     setContent(content);
